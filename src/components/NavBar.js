@@ -10,7 +10,7 @@ function NavBar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link href="#link">Historia</Nav.Link>
-            <NavDropdown title="Menu Comidas" id="basic-nav-dropdown">
+            <NavDropdown title="Menu" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Cervezas</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Tragos</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Bebida</NavDropdown.Item>
@@ -19,6 +19,7 @@ function NavBar() {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
+        {/* carrito */}
       </Navbar>
     )
 }
