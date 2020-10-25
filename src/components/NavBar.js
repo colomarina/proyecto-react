@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar,Nav,NavDropdown } from 'react-bootstrap';
+import { Navbar,Nav,NavDropdown,Form } from 'react-bootstrap';
+import CartWidget from './CartWidget';
 
 function NavBar() {
     return (
@@ -18,8 +19,10 @@ function NavBar() {
               <NavDropdown.Item href="#action/3.5">Hamburguesas</NavDropdown.Item>
             </NavDropdown>
           </Nav>
+          <Form inline>
+            <CartWidget />
+          </Form>
         </Navbar.Collapse>
-        {/* carrito */}
       </Navbar>
     )
 }

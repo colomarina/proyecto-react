@@ -1,13 +1,13 @@
 import React from 'react';
 import Items from "../components/Items";
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import { Card,Button } from 'react-bootstrap';
+import TituloOfertas from './TituloOfertas';
 
-function ItemListContainer() {
+function ItemListContainer({ titulo }) {
     return (
         <div>
-            <Items nombre="Hamburguesa Dunn"/>
-            <Items nombre="Pizza Dunn"/>
+            <TituloOfertas titulo={ titulo }/>
+            <Items nombre="Hamburguesa Dunn" descripcion="Hamburguesa doble carne, doble queso cheddar, lechuga, tomate y salsa dunn"/>
+            <Items nombre="Pizza Dunn" descripcion="Pizza a base de tomate, queso mozzarella, salchichas alemanas y huevo frito"/>
         </div>
     )
 }
