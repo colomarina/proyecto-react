@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar,Nav,NavDropdown,Form } from 'react-bootstrap';
 import CartWidget from './CartWidget';
 
-function NavBar() {
+function NavBar({totalItems}) {
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
         <Navbar.Brand href="#home">Dunn</Navbar.Brand>
@@ -20,7 +20,7 @@ function NavBar() {
             </NavDropdown>
           </Nav>
           <Form inline>
-            <CartWidget />
+            <CartWidget totalItems={totalItems}/>
           </Form>
         </Navbar.Collapse>
       </Navbar>
