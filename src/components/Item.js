@@ -12,7 +12,7 @@ function Item({id, title, price, pictureUrl}) {
             <Card.Body>
                 <Card.Title>{pictureUrl}</Card.Title>
                 <Card.Text>{price}</Card.Text>
-                <ItemCount stock={10} initial={2} onAdd={0}/>
+                <ItemCount stock={10} initial={2} onAdd={cantidad => alert(cantidad)}/>
             </Card.Body>
         </Card>
         </>
