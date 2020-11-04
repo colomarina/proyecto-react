@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import NavBar from "./NavBar";
-import ItemList from "./ItemList";
-import TituloOfertas from './TituloOfertas';
+import ItemList from "../ItemList/ItemList";
+import TituloOfertas from '../TituloOfertas/TituloOfertas';
 
 function ItemListContainer({ titulo }) {
     const [items, setItems] = useState([]);
@@ -9,8 +8,7 @@ function ItemListContainer({ titulo }) {
         {id:1, title:"AMERICAN IPA", price:"100" , pictureUrl:"..."},
         {id:2, title:"OKTOBER", price:"80" , pictureUrl:"..."},
         {id:3, title:"IMPERIAL STOUT", price:"80" , pictureUrl:"..."},
-        {id:4, title:"HONEY", price:"50" , pictureUrl:"..."},
-        {id:5, title:"IRISH", price:"50" , pictureUrl:"..."},
+        {id:4, title:"IRISH", price:"50" , pictureUrl:"..."},
     ]
     const traerItems = () => { 
         return new Promise( resolve => {
@@ -28,9 +26,8 @@ function ItemListContainer({ titulo }) {
     }, [])
     return (
         <>
-        <NavBar />
-        <TituloOfertas titulo={ titulo }/>
-        <ItemList items={items}/>
+            <TituloOfertas titulo={ titulo }/>
+            <ItemList items={items}/>
         </>
     )
 }

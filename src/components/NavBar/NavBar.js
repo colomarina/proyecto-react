@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar,Nav,NavDropdown,Form } from 'react-bootstrap';
-import CartWidget from './CartWidget';
+import CartWidget from '../CartWidget/CartWidget';
 
 function NavBar({totalItems}) {
     return (

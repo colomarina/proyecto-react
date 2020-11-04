@@ -1,17 +1,19 @@
 import React from 'react';
-import Item from "./Item";
+import Item from "../Item/Item";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { CardDeck } from 'react-bootstrap';
 
 function ItemList({items}) {
     
     return (
         <>
-        <ul>
+        <CardDeck>
             {
                 items.map((items)=>{
                     return <Item key={items.id} title={items.title} price={items.price} pictureUrl={items.pictureUrl} />
                 })
             }
-        </ul>
+        </CardDeck>
         </>
     )
 }
