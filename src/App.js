@@ -6,6 +6,7 @@ import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailCont
 import NavBar from "./components/NavBar/NavBar"
 import { BrowserRouter, Route } from 'react-router-dom';
 import Switch from 'react-bootstrap/esm/Switch';
+import Cart from './components/Cart/Cart';
 
 
 
@@ -18,8 +19,11 @@ function App() {
         <Route exact path="/">
           <ItemListContainer titulo="Ofertas del dia!" />
         </Route>
-        <Route path="/item/:id/">
+        <Route exact path="/item/:id">
           <ItemDetailContainer />
+        </Route>
+        <Route path="/cart">
+          <Cart />
         </Route>
       </Switch>
     </BrowserRouter>

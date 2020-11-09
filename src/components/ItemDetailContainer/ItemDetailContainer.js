@@ -19,12 +19,12 @@ function ItemDetailContainer() {
     //     return <ItemDetail key={items.id} title={items.title} price={items.price} pictureUrl={items.pictureUrl} />;
     // }
     useEffect(()=>{
-        console.log('Inicializado');
+        console.log('Inicializado el componente', id);
         traerItem( id ).then(item => {
             setItem(item)
 
         })
-    }, [])
+    }, [id])
     return (
         <>
         {
