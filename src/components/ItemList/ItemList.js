@@ -10,7 +10,7 @@ function ItemList({items}) {
         <CardDeck>
             {
                 items.map((items)=>{
-                    return <Item key={items.id} title={items.title} price={items.price} pictureUrl={items.pictureUrl} />
+                    return <Item key={items.id} id={items.id} title={items.title} price={items.price} pictureUrl={items.pictureUrl} />
                 })
             }
         </CardDeck>
