@@ -7,26 +7,29 @@ import NavBar from "./components/NavBar/NavBar"
 import { BrowserRouter, Route } from 'react-router-dom';
 import Switch from 'react-bootstrap/esm/Switch';
 import Cart from './components/Cart/Cart';
+import CartProvider from "./context/CartContext";
 
 
 
 function App() {
   
   return (
-    <BrowserRouter>
-      <NavBar />
-      <Switch>
-        <Route exact path="/">
-          <ItemListContainer titulo="Ofertas del dia!" />
-        </Route>
-        <Route exact path="/item/:id">
-          <ItemDetailContainer />
-        </Route>
-        <Route path="/cart">
-          <Cart />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+    <CartProvider defaultCart={[]}>
+      <BrowserRouter>
+        <NavBar />
+        <Switch>
+          <Route exact path="/">
+            <ItemListContainer titulo="Ofertas del dia!" />
+          </Route>
+          <Route exact path="/item/:id">
+            <ItemDetailContainer />
+          </Route>
+          <Route path="/cart">
+            <Cart />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </CartProvider>
   );
 }
 

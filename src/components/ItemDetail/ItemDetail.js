@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ItemCount from '../ItemCount/ItemCount';
 import cerveza from '../Imagenes/cerveza.png';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from 'react-bootstrap';
 
 const style = {
     row: {
@@ -20,6 +22,13 @@ const style = {
 }
 
 function ItemDetail({id, title, price, pictureUrl}) {
+    const [show, setShow] = useState(true);
+    const [quantity , setQuantity] = useState();
+    function onAdd(cantidad) {
+        setQuantity(cantidad);
+        setShow(false)
+    }
+
     return (
         <>
         <div style={style.row}>
@@ -38,7 +47,14 @@ function ItemDetail({id, title, price, pictureUrl}) {
             <div style={style.column}>
             </div>
             <div style={style.column}>
-                <ItemCount stock={10} initial={2} onAdd={cantidad => alert(cantidad)}/>
+                <br></br>
+                {
+                    show ? (
+                        <ItemCount stock={10} initial={2} onAdd={cantidad => onAdd(cantidad)}/>
+                    ) : (
+                        <Button variant="primary" >Terminar mi compra</Button>
+                    )
+                }
             </div>
         </div>
         
