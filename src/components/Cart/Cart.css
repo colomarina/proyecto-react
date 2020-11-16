@@ -1,0 +1,60 @@
+.fila1_columna1 {
+    display: grid;
+    grid-template-columns: auto;
+    text-align: center;
+}
+.fila1_columna2 {
+    display: grid;
+    grid-template-columns: auto auto;
+    text-align: center;
+}
+.fila1_columna3 {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    text-align: center;
+}
+.item_centrado{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+.lista {
+    background-color: white;
+    color: black;
+    border: 2px solid teal;
+}
+.buttonCart {
+    /* background-color: #4CAF50;  */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    /* font-size: 16px; */
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 15px;
+}
+  
+.buttonRemove {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #FF512C;
+}
+  
+.buttonRemove:hover {
+    background-color: #FF512C;
+    color: white;
+}
+.buttonBuy {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+}
+  
+.buttonBuy:hover {
+    background-color: #4CAF50;
+    color: white;
+}

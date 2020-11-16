@@ -3,13 +3,17 @@ import ItemCount from '../ItemCount/ItemCount';
 import cerveza from '../Imagenes/cerveza.png';
 import { Link } from 'react-router-dom';
 import './ItemDetail.css';
+import { useCartContext } from '../../context/CartContext';
 
 function ItemDetail({id, title, price, pictureUrl}) {
+    const { add } = useCartContext();
+
     const [show, setShow] = useState(true);
     const [quantity , setQuantity] = useState();
-    function onAdd(cantidad) {
-        setQuantity(cantidad);
-        setShow(false)
+    function onAdd(quantity) {
+        setQuantity(quantity);
+        setShow(false);
+        add({id, title, price}, quantity);
     }
 
     return (
@@ -33,10 +37,10 @@ function ItemDetail({id, title, price, pictureUrl}) {
                 <br></br>
                 {
                     show ? (
-                        <ItemCount stock={10} initial={2} onAdd={cantidad => onAdd(cantidad)}/>
+                        <ItemCount stock={10} initial={2} onAdd={quantity => onAdd(quantity)}/>
                     ) : (
                         <Link to="/cart">
-                            <button className="button button1">Terminar mi compra<br />({quantity} cervezas)</button>
+                            <button className="button button1">Ver mi carrito<br /></button>
                         </Link>
                     )
                 }

@@ -1,11 +1,9 @@
 import React from 'react';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import './App.css';
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import NavBar from "./components/NavBar/NavBar"
-import { BrowserRouter, Route } from 'react-router-dom';
-import Switch from 'react-bootstrap/esm/Switch';
+import { BrowserRouter, Route ,Switch } from 'react-router-dom';
 import Cart from './components/Cart/Cart';
 import CartProvider from "./context/CartContext";
 
