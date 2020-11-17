@@ -4,8 +4,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar,Nav,NavDropdown,Form } from 'react-bootstrap';
 import CartWidget from '../CartWidget/CartWidget';
 import { Link } from 'react-router-dom';
+import { useCartContext } from '../../context/CartContext';
 
 function NavBar({totalItems}) {
+    const {
+      cart,
+      size
+    } = useCartContext();
+
     return (
     <>
       {/* <div className="topNav">
@@ -40,7 +46,7 @@ function NavBar({totalItems}) {
             </NavDropdown>
           </Nav>
           <Form inline>
-            <CartWidget totalItems={totalItems}/>
+            <CartWidget totalItems={size}/>
           </Form>
         </Navbar.Collapse>
       </Navbar>

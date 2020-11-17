@@ -10,17 +10,17 @@ export default function CartProvider({children}) {
     // Funciona como nuestra propia API
     function add(item, quantity) {
         // Agrega el item y actualiza el estado
-        console.log(cart)
-        const itemExist = cart.includes(item.id);
+
         if (!cart.find(i => i.id === item.id)) {
-        // console.log(itemExist);
-        // if(!itemExist){
-            // console.log('este item va a agregarlo')
             item = {...item, quantity}
             setCart([...cart, item ])
         } 
         if (cart.find(i => i.id === item.id)) {
-            console.log('actualizar cantidad')
+            cart.forEach( i => {
+                if (i.id === item.id) {
+                    i.quantity = i.quantity + quantity;
+                }
+            })
         }
         // if(!item) {setCart([...cart, item]);} agregar
         // if(item) {
