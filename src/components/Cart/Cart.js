@@ -1,22 +1,16 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './Cart.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Card, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { useCartContext } from '../../context/CartContext';
-import { Link } from 'react-router-dom';
 
 function Cart() {
     const {
         cart,
-        add,
         remove,
         removeAll,
-        size,
-        isEmpty,
-        hasItem
+        isEmpty
     } = useCartContext();
-    const [show, setShow] = useState();
-    const [ currentCart , newCurrentCart] = useState("");
 
     return (
         <>

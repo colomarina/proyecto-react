@@ -22,13 +22,6 @@ export default function CartProvider({children}) {
                 }
             })
         }
-        // if(!item) {setCart([...cart, item]);} agregar
-        // if(item) {
-        //  item = {...item, quantity: }
-        //  setCart([...cart])
-        // } actualizar
-        // Antes de terminar cada operacion actualizar el estado
-        // console.log('Trataste de agregar el item:', item);
     }
 
     function remove(itemId) {

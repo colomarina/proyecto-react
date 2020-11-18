@@ -6,9 +6,8 @@ import CartWidget from '../CartWidget/CartWidget';
 import { Link } from 'react-router-dom';
 import { useCartContext } from '../../context/CartContext';
 
-function NavBar({totalItems}) {
+function NavBar() {
     const {
-      cart,
       size
     } = useCartContext();
 
@@ -31,18 +30,16 @@ function NavBar({totalItems}) {
         </ul>
       </div> */}
         <Navbar bg="dark" variant="dark" expand="lg">
-        <Navbar.Brand ><Link to="/">Dunn</Link></Navbar.Brand>
+        <Link to="/" ><Navbar.Brand >Dunn</Navbar.Brand></Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/historia">Historia</Nav.Link>
             <NavDropdown title="Menu" id="basic-nav-dropdown">
-              
-              <NavDropdown.Item ><Link to="/" >Cervezas</Link></NavDropdown.Item>
-              <NavDropdown.Item ><Link to="/" >Tragos</Link></NavDropdown.Item>
-              <NavDropdown.Item ><Link to="/" >Papas</Link></NavDropdown.Item>
-              <NavDropdown.Item ><Link to="/" >Hamburguesas</Link></NavDropdown.Item>
-              <NavDropdown.Item ><Link to="/" >Pizzas</Link></NavDropdown.Item>
+              <Link to="/" ><NavDropdown.Item >Cervezas</NavDropdown.Item></Link>
+              <Link to="/" ><NavDropdown.Item >Tragos</NavDropdown.Item></Link>
+              <Link to="/" ><NavDropdown.Item >Papas</NavDropdown.Item></Link>
+              <Link to="/" ><NavDropdown.Item >Hamburguesas</NavDropdown.Item></Link>
+              <Link to="/" ><NavDropdown.Item >Pizzas</NavDropdown.Item></Link>
             </NavDropdown>
           </Nav>
           <Form inline>
