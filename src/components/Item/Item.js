@@ -1,25 +1,23 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card } from 'react-bootstrap';
-import cerveza from '../Imagenes/cerveza.png';
+import imagen from '../Imagenes/imagen.jpg';
 import { Link } from 'react-router-dom';
 
-const style = {
-    imagen: {
-        maxWidth: '150px',
-        maxHeight: '150px',
-    }
-}
-
-function Item({id, title, price, pictureUrl}) {
+function Item({id, title, price, description}) {
     return (
         <>
         <Card>
-            <Link to={`/item/${id}`}><Card.Img variant="top" style={style.imagen} src={cerveza} /></Link>
+            <Link to={`/item/${id}`}><Card.Img variant="top" src={imagen} /></Link>
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
-                <Card.Text>${price}</Card.Text>
+                <Card.Text>
+                    {description}
+                </Card.Text>
             </Card.Body>
+            <Card.Footer>
+                <small className="text-muted">Precio Unitario ${price}</small>
+            </Card.Footer>
         </Card>
         </>
     )

@@ -18,7 +18,6 @@ function ItemCount({ stock , initial , onAdd }) {
 
     return (
         <>
-        <span>Stock disponible{stock}</span>
         <ButtonToolbar className="justify-content-md-center embed-responsive" aria-label="Toolbar with button groups">
             <ButtonGroup className="mr-2" aria-label="First group">
                 <Button variant="primary" onClick={decreaseCount} disabled={count < 1}>-</Button>

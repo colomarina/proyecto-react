@@ -19,6 +19,9 @@ function App() {
           <Route exact path="/">
             <ItemListContainer titulo="Ofertas del dia!" />
           </Route>
+          <Route exact path="/category/:categoryId">
+            <ItemListContainer titulo="Ofertas del dia!" />
+          </Route>
           <Route exact path="/item/:id">
             <ItemDetailContainer />
           </Route>

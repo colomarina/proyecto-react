@@ -16,7 +16,7 @@ function ItemDetailContainer() {
     return (
         <>
         {
-            item && <ItemDetail key={item.id} id={item.id} title={item.title} price={item.price} pictureUrl={item.pictureUrl} />
+            item && <ItemDetail key={item.id} id={item.id} title={item.title} price={item.price} stock={item.stock} description={item.description} pictureUrl={item.pictureUrl} />
         }        
         </>
     )

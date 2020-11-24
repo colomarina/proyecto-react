@@ -1,39 +1,74 @@
-import React from 'react';
+import React, { useState } from 'react';
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
 import './Cart.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Card } from 'react-bootstrap';
+import { Container , Row, Col } from 'react-bootstrap';
 import { useCartContext } from '../../context/CartContext';
+import { getFirestore } from '../../firebase';
 
 function Cart() {
+    // const 
     const {
         cart,
         remove,
         removeAll,
         isEmpty
     } = useCartContext();
+    const [show , setShow] = useState(false);
+
+    async function createOrder() {
+        const newOrder = {
+            buyer: { name: 'Colito', phone: '+542216408251', email: 'asd@asd.com'},
+            // item tomarlos del cart
+            items: [
+                { id: '1', title: 'Golde', price: 200, quantity: 2},
+                { id: '2', title: 'Red', price: 200, quantity: 2},
+            ],
+            date: firebase.firestore.FieldValue.serverTimestamp(),
+            total: 500,
+        };
+        const db = getFirestore();
+        const orders = db.collection("orders");
+
+        try {
+            const doc = await orders.add(newOrder);
+            setShow(true);
+            console.log('Orden creada con el id:', doc.id)
+            // actualizo aca
+        } catch (error) {
+            console.log('Error creando orden')  
+        }
+
+
+    }
 
     return (
         <>
-        <Card>
+        <Container>
             {
                 !isEmpty ? (
                     <ul className="lista">
                         {cart.map(item => (
-                            <div key={item.id}>
-                                <h3 style={{textAlign: 'center'}}>{item.title} x {item.quantity}</h3>
-                                <div className="fila1_columna2">
-                                    <div>
-                                        <button className="buttonCart buttonRemove" onClick={() => {
+                            <div style={{
+                                border: "2px solid black",
+                                marginTop: "5px"
+                                }}>
+
+                            <Row>
+                                <Col xs={6} md={4} style={{textAlign: "center"}}>
+                                    <h4>{item.quantity} {item.title}</h4>
+                                </Col>
+                                <Col xs={6} md={4} style={{textAlign: "center"}}>
+                                    <h4>$ {item.price * item.quantity}</h4>
+                                </Col>
+                                <Col xs={6} md={4} style={{textAlign: "center"}}>
+                                <button className="buttonEliminar buttonEliminar1" onClick={() => {
                                             remove(item.id)
                                         }} >Eliminar</button>
-                                    </div>
-                                    {/* <div>
-                                        Cantidad: {item.quantity}
-                                    </div> */}
-                                    <div>
-                                        <h3>$ {item.price * item.quantity}</h3>
-                                    </div>
-                                </div>
+                                        {/* <button>Eliminar</button> */}
+                                </Col>
+                            </Row>
                             </div>
                         ))}
                     </ul>
@@ -46,19 +81,47 @@ function Cart() {
                     </div>
                 )
             }
-            <div className="fila1_columna2">
-                <div>
+            <Row>
+                <Col style={{textAlign: "center"}}>
+                    <h4>Hola</h4>
+                </Col>
+            </Row>
+            <Row>
+                <Col style={{textAlign: "center"}}>
                     <button className="buttonCart buttonRemove" 
                             onClick={() => {removeAll()}} >
                                 Vaciar carrito
                     </button>
-                </div>
-                <div>
-                    <button className="buttonCart buttonBuy">Finalizar Compra</button>
-                </div>
-                
-            </div>
-        </Card>
+                </Col>
+                <Col style={{textAlign: "center"}}>
+                    {
+                        isEmpty ? (
+                            <br />
+                        ) : (
+                            <button className="buttonCart buttonBuy"
+                                    onClick={() => {createOrder()}} > 
+                                    Crear Orden
+                            </button>
+                        )
+                    }
+                </Col>
+            </Row>
+            <form>
+                <Row>
+                    <Col>
+                        <label>Nombre</label>
+                        <input type="text" />
+                    </Col>
+                    <Col>
+                        <label>Apellido</label>
+                        <input type="text" />
+                    </Col>
+                </Row>
+                    <Col>
+                    {/* <button className="buttonCart buttonBuy">Finalizar Compra {}</button> */}
+                    </Col>
+            </form>
+        </Container>
         </>
     )
 }

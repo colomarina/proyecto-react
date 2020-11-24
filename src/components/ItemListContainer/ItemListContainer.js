@@ -1,27 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { getFirestore } from '../../firebase';
 import ItemList from "../ItemList/ItemList";
 import TituloOfertas from '../TituloOfertas/TituloOfertas';
 
 function ItemListContainer({ titulo }) {
     const [items, setItems] = useState([]);
-    // const item = [
-    //     {id:1, title:"AMERICAN IPA", price:"100" , pictureUrl:"..."},
-    //     {id:2, title:"OKTOBER", price:"80" , pictureUrl:"..."},
-    //     {id:3, title:"IMPERIAL STOUT", price:"80" , pictureUrl:"..."},
-    //     {id:4, title:"IRISH", price:"50" , pictureUrl:"..."},
-    // ]
-    // const traerItems = () => { 
-    //     return new Promise( resolve => {
-    //         setTimeout(() => {
-    //             resolve(item);
-    //         }, 2000)
-    //     })
-    // }
-
+    const { categoryId } = useParams();
     useEffect(()=>{
         const db = getFirestore();
-        const itemCollection = db.collection("items");
+        let itemCollection = db.collection("items");
+
+        if (categoryId){
+            itemCollection = itemCollection.where('categoryId', '==', categoryId);
+        }
         // Traer los items con precios mayores a 200
         // const priceItems = itemCollection.where('price', '>', 200);
         // const catCollection = itemCollection.where('category', '==', 'cerveza');
@@ -33,11 +25,7 @@ function ItemListContainer({ titulo }) {
             };
             setItems(querySnapshot.docs.map(doc => ({id: doc.id, ...doc.data()})));
         });
-
-        // traerItems().then(items => {
-        //     setItems(items)
-        // })
-    }, [])
+    }, [categoryId])
     return (
         <>
             <TituloOfertas titulo={ titulo }/>
