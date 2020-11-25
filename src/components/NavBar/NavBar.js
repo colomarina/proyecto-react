@@ -20,7 +20,7 @@ function NavBar() {
     return (
     <>
       <Navbar bg="dark" variant="dark" expand="lg">
-        <Link to="/" ><Navbar.Brand >Dunn</Navbar.Brand></Link>
+        <NavLink to="/" ><Navbar.Brand >Dunn</Navbar.Brand></NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
