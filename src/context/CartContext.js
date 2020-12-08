@@ -9,8 +9,6 @@ export default function CartProvider({children}) {
     // Nuestro almacen de estado de compra
     // Funciona como nuestra propia API
     function add(item, quantity) {
-        // Agrega el item y actualiza el estado
-
         if (!cart.find(i => i.id === item.id)) {
             item = {...item, quantity}
             setCart([...cart, item ])
@@ -26,7 +24,7 @@ export default function CartProvider({children}) {
 
     function remove(itemId) {
         setCart(cart.filter(item => item.id !== itemId))
-        console.log('Removiste el item:', itemId);
+        // console.log('Removiste el item:', itemId);
     }
 
     function removeAll() {

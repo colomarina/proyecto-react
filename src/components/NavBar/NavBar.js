@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './NavBar.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar,Nav,NavDropdown,Form } from 'react-bootstrap';
 import CartWidget from '../CartWidget/CartWidget';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useCartContext } from '../../context/CartContext';
+import { getFirestore } from '../../firebase';
 
 const staticCategory = [
   {categoryId: 'cervezas', name: 'Cervezas'},
-  {categoryId: 'papas_fritas', name: 'Papas Fritas'},
+  {categoryId: 'papas', name: 'Papas'},
   {categoryId: 'pizzas', name: 'Pizzas'}
 ]
 
@@ -16,6 +17,27 @@ function NavBar() {
     const {
       size
     } = useCartContext();
+    // const [categoryId , setCategoryId] = useState([])
+    // useEffect(() => {
+    //   const db = getFirestore();
+    //   debugger;
+    //   // let categoryCollection = db.collection('category');
+    //   let citiesRef = db.collection('category');
+    //   let query = citiesRef.get()
+    //     .then(snapshot => {
+    //       if (snapshot.empty) {
+    //         console.log('No matching documents.');
+    //         return;
+    //       }
+
+    //       snapshot.forEach(doc => {
+    //         console.log(doc.id, '=>', doc.data());
+    //       });
+    //     })
+    //     .catch(err => {
+    //       console.log('Error getting documents', err);
+    //     });
+    // },[])
 
     return (
     <>
@@ -28,7 +50,7 @@ function NavBar() {
               {
                 staticCategory.map(cat => (
                   <NavDropdown.Item key={cat.categoryId}>
-                    <NavLink to={`/category/${cat.categoryId}`}>
+                    <NavLink to={`/category/${cat.categoryId}`} key={cat.categoryId}>
                         {cat.name}
                     </NavLink>
                   </NavDropdown.Item>

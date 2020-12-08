@@ -1,4 +1,12 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# E-commerce en React!
+
+Es un tienda online para la Cerveceria Dunn, donde se ofrece un E-commerce para su local.
+El sistema es muy amigable al usuario donde en el inicio muestra las ofertas del dni y todos los productos que tiene la cerveceria. El seleccionar un producto , el sistema te lleva a el propio producto con una descripcion mas extensa y una botonera donde puedes elegir la cantidad. Al elegir la cantidad te muestra un boton para ir a la carrito. Cuando se presiona se ve la lista de productos seleccionados y un checkout donde al presionarlo, se muestra un formulario para finalizar la compra. Al finalizar la compra el sistema te muestra el codigo de la orden.
+
+
+# Construido con 🛠️
+
+- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 

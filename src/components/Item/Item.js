@@ -8,7 +8,7 @@ function Item({id, title, price, description}) {
     return (
         <>
         <Card>
-            <Link to={`/item/${id}`}><Card.Img variant="top" src={imagen} /></Link>
+            <Link to={`/item/${id}`}><Card.Img variant="top"  src={imagen} /></Link>
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
                 <Card.Text>

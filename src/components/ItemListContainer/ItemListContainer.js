@@ -13,12 +13,7 @@ function ItemListContainer({ titulo }) {
 
         if (categoryId){
             itemCollection = itemCollection.where('categoryId', '==', categoryId);
-        }
-        // Traer los items con precios mayores a 200
-        // const priceItems = itemCollection.where('price', '>', 200);
-        // const catCollection = itemCollection.where('category', '==', 'cerveza');
-        // const catCollection = itemCollection.where('category', '==', 'cerveza').where('price', '>', 200);
-        
+        }        
         itemCollection.get().then((querySnapshot) => {
             if (querySnapshot.size === 0) {
                 console.log("No hay resultados");
