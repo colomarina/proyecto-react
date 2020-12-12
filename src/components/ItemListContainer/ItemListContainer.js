@@ -4,7 +4,7 @@ import { getFirestore } from '../../firebase';
 import ItemList from "../ItemList/ItemList";
 import TituloOfertas from '../TituloOfertas/TituloOfertas';
 
-function ItemListContainer({ titulo }) {
+function ItemListContainer({ titulo , color }) {
     const [items, setItems] = useState([]);
     const { categoryId } = useParams();
     useEffect(()=>{
@@ -23,7 +23,7 @@ function ItemListContainer({ titulo }) {
     }, [categoryId])
     return (
         <>
-            <TituloOfertas titulo={ titulo }/>
+            <TituloOfertas titulo={ titulo } color={color} />
             <ItemList items={items}/>
         </>
     )

@@ -17,10 +17,10 @@ function App() {
         <NavBar />
         <Switch>
           <Route exact path="/">
-            <ItemListContainer titulo="Ofertas del dia!" />
+            <ItemListContainer titulo="Ofertas del dia!" color="success"/>
           </Route>
           <Route exact path="/category/:categoryId">
-            <ItemListContainer titulo="Ofertas del dia!"/>
+            <ItemListContainer titulo="Ofertas del dia!" color="success"/>
           </Route>
           <Route exact path="/item/:id">
             <ItemDetailContainer />

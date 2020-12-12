@@ -33,40 +33,48 @@ function Cart() {
     const arrayPrices = cart.map(item => (item.price * item.quantity));
     const totalPrice = arrayPrices.reduce((a, b) => a + b, 0);
     async function createOrder() {
-        debugger;
-        const db = getFirestore();
-        const orders = db.collection("orders");
-        const newOrder = {
-            buyer: userInfo,
-            items: cart,
-            date: firebase.firestore.FieldValue.serverTimestamp(),
-            total: totalPrice,
-        };
 
-        try {
-            setShowOrderCompleted(true);
-            const doc = await orders.add(newOrder);
-            setOrderId(doc.id);
-            const itemsToUpdate = db.collection("items").where(firebase.firestore.FieldPath.documentId(), 'in', cart.map(c => c.id));
-            const query = await itemsToUpdate.get();
-            const batch = db.batch();
-            const outOfStock = [];
-            query.docs.forEach((docSnapshot, id) => {
-                if (docSnapshot.data().stock >= cart[id].quantity) {
-                    batch.update(docSnapshot.ref, {stock: docSnapshot.data().stock - cart[id].quantity });
-                } else {
-                    outOfStock.push({ ...docSnapshot.data(), id: docSnapshot.id});
-                }
-            })
-            if (outOfStock.length === 0) {
-                await batch.commit();
-            }
+        debugger;
+        let email = document.querySelector('#Email').value;
+        let emailRepeat = document.querySelector('#RepeatEmail').value;
+        if (email === emailRepeat) {
             
-            removeAll();
-        } catch (error) {
-            console.log('Error creando orden' + error);
-            setShowOrderCompleted(false);
-            removeAll();
+            const db = getFirestore();
+            const orders = db.collection("orders");
+            const newOrder = {
+                buyer: userInfo,
+                items: cart,
+                date: firebase.firestore.FieldValue.serverTimestamp(),
+                total: totalPrice,
+            };
+    
+            try {
+                setShowOrderCompleted(true);
+                const doc = await orders.add(newOrder);
+                setOrderId(doc.id);
+                const itemsToUpdate = db.collection("items").where(firebase.firestore.FieldPath.documentId(), 'in', cart.map(c => c.id));
+                const query = await itemsToUpdate.get();
+                const batch = db.batch();
+                const outOfStock = [];
+                query.docs.forEach((docSnapshot, id) => {
+                    if (docSnapshot.data().stock >= cart[id].quantity) {
+                        batch.update(docSnapshot.ref, {stock: docSnapshot.data().stock - cart[id].quantity });
+                    } else {
+                        outOfStock.push({ ...docSnapshot.data(), id: docSnapshot.id});
+                    }
+                })
+                if (outOfStock.length === 0) {
+                    await batch.commit();
+                }
+                
+                removeAll();
+            } catch (error) {
+                console.log('Error creando orden' + error);
+                setShowOrderCompleted(false);
+                removeAll();
+            }
+        } else {
+            console.log('Error creando orden, los mails son distintos');
         }
     }
 
@@ -184,7 +192,7 @@ function Cart() {
                                     
                                     <Row>
                                         <Col style={{ textAlign: "center" }}>
-                                            <button className="buttonCart buttonBuy" onClick={ () => {createOrder()} } >Finalizar Compra </button>
+                                            <button className="buttonCart buttonBuy" onClick={ () => {createOrder()} }>Finalizar Compra </button>
                                         </Col>
                                     </Row>
                                 </Form>

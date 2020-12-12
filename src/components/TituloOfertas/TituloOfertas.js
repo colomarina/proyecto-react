@@ -2,9 +2,9 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Alert } from 'react-bootstrap';
 
-function TituloOfertas({ titulo }) {
+function TituloOfertas({ titulo , color}) {
     return (
-        <Alert variant="success">
+        <Alert variant={color}>
         <Alert.Heading>{ titulo }</Alert.Heading>
         </Alert>
     )
